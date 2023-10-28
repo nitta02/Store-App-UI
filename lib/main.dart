@@ -26,8 +26,13 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: lightScaffoldColor,
         primaryColor: lightCardColor,
         appBarTheme: AppBarTheme(
+          actionsIconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+          
           iconTheme: IconThemeData(
             color: lightIconsColor,
+
           ),
           backgroundColor: lightScaffoldColor,
           centerTitle: true,

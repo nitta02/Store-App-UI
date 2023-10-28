@@ -6,20 +6,22 @@ class SaleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Container(
       width: double.infinity,
       height: size.height * 0.3,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         gradient: const LinearGradient(
-            colors: [
-              Color(0xFF7A60A5),
-              Color(0xFF82C3DF),
-            ],
-            begin: FractionalOffset(0.0, 0.0),
-            end: FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp),
+          colors: [
+            Color.fromARGB(255, 66, 16, 147),
+            Color.fromARGB(255, 114, 154, 171),
+          ],
+          begin: FractionalOffset(0.0, 0.0),
+          end: FractionalOffset(1.0, 0.0),
+          stops: [0.0, 1.0],
+          tileMode: TileMode.clamp,
+        ),
       ),
       child: Row(
         children: [
@@ -30,22 +32,26 @@ class SaleWidget extends StatelessWidget {
               child: Container(
                 height: double.infinity,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF9689CE),
-                  borderRadius: BorderRadius.circular(18),
+                  color: const Color.fromARGB(255, 112, 99, 169),
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(5.0),
                   child: Column(
                     // mainAxisSize: MainAxisSize.max,
                     // mainAxisAlignment: MainAxisAlignment.center,
                     // crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
-                        "Get the special discount",
-                        style: TextStyle(color: Colors.white),
+                        "Special discount",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       SizedBox(
-                        height: 18,
+                        height: 15,
                       ),
                       Flexible(
                         child: SizedBox(
