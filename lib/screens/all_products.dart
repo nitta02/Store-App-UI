@@ -1,7 +1,7 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:small_store_app/model/products_model.dart';
+import 'package:small_store_app/services/api_services.dart';
 import 'package:small_store_app/widget/item_feeds.dart';
-import 'package:small_store_app/widget/sale_widget.dart';
 
 class AllProducts extends StatefulWidget {
   const AllProducts({Key? key}) : super(key: key);
@@ -11,23 +11,21 @@ class AllProducts extends StatefulWidget {
 }
 
 class _AllProductsState extends State<AllProducts> {
-  @override
-  void initState() {
-    textController = TextEditingController();
-    super.initState();
-  }
+  late List<ProductsModel> productmodelList;
 
   @override
-  void dispose() {
-    super.dispose();
+  void didChangeDependencies() {
+    getData();
+    super.didChangeDependencies();
   }
 
-  late TextEditingController textController;
+  Future<void> getData() async {
+    productmodelList = await ProductsApiServices.productiapiServices();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -52,17 +50,21 @@ class _AllProductsState extends State<AllProducts> {
                         height: 15,
                       ),
                       GridView.builder(
-                        itemCount: 5,
+                        itemCount: productmodelList.length,
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 5.0,
                           mainAxisSpacing: 1.0,
                           childAspectRatio: 0.7,
                         ),
                         itemBuilder: (context, index) {
-                          return ItemFeeds();
+                          return ItemFeeds(
+                            image: productmodelList[index].images![0],
+                            title: productmodelList[index].title.toString(),
+                          );
                         },
                       )
                     ],
