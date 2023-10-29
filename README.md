@@ -1,16 +1,8 @@
 # small_store_app
 
-A new Flutter project.
+# App Preview: 
 
-## Getting Started
+![Screenshot_1698586264](https://github.com/nitta02/small_store_app/assets/110607962/fce23906-8b2c-4052-bcb6-c399d0465e22)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Screenshot_1698586255](https://github.com/nitta02/small_store_app/assets/110607962/f8fd9208-7759-44f1-a4e1-748ab20aa25b)
