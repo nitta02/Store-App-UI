@@ -6,7 +6,13 @@ import 'package:small_store_app/constants/color_constants.dart';
 import 'package:small_store_app/screens/product_details.dart';
 
 class ItemFeeds extends StatelessWidget {
-  const ItemFeeds({Key? key}) : super(key: key);
+  const ItemFeeds({
+    Key? key,
+    required this.image,
+    required this.title,
+  }) : super(key: key);
+  final String title;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -22,71 +28,77 @@ class ItemFeeds extends StatelessWidget {
             Navigator.push(
               context,
               PageTransition(
-                  child: ProductDetails(), type: PageTransitionType.fade),
+                  child: const ProductDetails(), type: PageTransitionType.fade),
             );
           },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 5, right: 5, top: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: RichText(
-                        text: TextSpan(
-                            text: '\$',
-                            style: const TextStyle(
-                                color: Color.fromRGBO(33, 150, 243, 1)),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: "168.00",
-                                style: TextStyle(
-                                  color: lightTextColor,
-                                  fontWeight: FontWeight.w600,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 5,
+                    right: 5,
+                    top: 8,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: RichText(
+                          text: TextSpan(
+                              text: '\$',
+                              style: const TextStyle(
+                                  color: Color.fromRGBO(33, 150, 243, 1)),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: "168.00",
+                                  style: TextStyle(
+                                    color: lightTextColor,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
-                              ),
-                            ]),
+                              ]),
+                        ),
                       ),
+                      const Icon(IconlyLight.heart),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: FancyShimmerImage(
+                    height: size.height * 0.2,
+                    width: double.infinity,
+                    errorWidget: const Icon(
+                      IconlyBold.danger,
+                      color: Colors.red,
+                      size: 28,
                     ),
-                    const Icon(IconlyLight.heart),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: FancyShimmerImage(
-                  height: size.height * 0.2,
-                  width: double.infinity,
-                  errorWidget: const Icon(
-                    IconlyBold.danger,
-                    color: Colors.red,
-                    size: 28,
-                  ),
-                  imageUrl: "https://i.ibb.co/vwB46Yq/shoes.png",
-                  boxFit: BoxFit.fill,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Title",
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  style: TextStyle(
-                    fontSize: 17,
-                    //  fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w700,
+                    imageUrl: image,
+                    boxFit: BoxFit.fill,
                   ),
                 ),
-              ),
-              SizedBox(
-                height: size.height * 0.01,
-              ),
-            ],
+                const SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    title,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: TextStyle(
+                      fontSize: 15,
+                      //  fontFamily: 'Roboto',
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * 0.01,
+                ),
+              ],
+            ),
           ),
         ),
       ),

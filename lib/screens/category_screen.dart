@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:small_store_app/model/category_model.dart';
 import 'package:small_store_app/widget/category_widgets.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<CategoryModel> categorymodelList = [];
     return Scaffold(
       appBar: AppBar(title: const Text("Categories")),
       body: GridView.builder(
@@ -19,7 +21,9 @@ class CategoriesScreen extends StatelessWidget {
             childAspectRatio: 1.2,
           ),
           itemBuilder: (ctx, index) {
-            return const CategoryWidget();
+            return CategoryWidget(
+              image: categorymodelList[index].image![0],
+            );
           }),
     );
   }

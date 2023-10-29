@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
 class CategoryWidget extends StatelessWidget {
-  const CategoryWidget({Key? key}) : super(key: key);
+  const CategoryWidget({
+    Key? key,
+    required this.image,
+  }) : super(key: key);
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +26,11 @@ class CategoryWidget extends StatelessWidget {
                 color: Colors.red,
                 size: 28,
               ),
-              imageUrl:
-                  "https://www.hostgator.com/blog/wp-content/uploads/2019/01/Create-product-categories-for-your-online-store.png",
+              imageUrl: image,
               boxFit: BoxFit.fill,
             ),
           ),
-          Align(
+          const Align(
             alignment: Alignment.bottomCenter,
             child: Text(
               "Categ name",
