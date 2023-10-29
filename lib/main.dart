@@ -1,46 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:small_store_app/constants/color_constants.dart';
-import 'package:small_store_app/screens/home_screen.dart';
 
-// This will always work for lock screen Orientation.
+import 'consts/global_colors.dart';
+import 'screens/home_screen.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of application.
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Small Store App',
+      title: 'Flutter 3.0.4 ',
       theme: ThemeData(
         scaffoldBackgroundColor: lightScaffoldColor,
         primaryColor: lightCardColor,
         appBarTheme: AppBarTheme(
-          actionsIconTheme: const IconThemeData(
-            color: Colors.black,
-          ),
-          
           iconTheme: IconThemeData(
             color: lightIconsColor,
-
           ),
           backgroundColor: lightScaffoldColor,
           centerTitle: true,
           titleTextStyle: TextStyle(
-            color: lightTextColor,
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
+              color: lightTextColor, fontSize: 22, fontWeight: FontWeight.bold),
           elevation: 0,
         ),
         iconTheme: IconThemeData(
@@ -50,24 +36,18 @@ class MyApp extends StatelessWidget {
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: Colors.black,
           selectionColor: Colors.blue,
-
           // selectionHandleColor: Colors.blue,
         ),
-
         // textTheme: TextTheme()
         // textTheme: Theme.of(context).textTheme.apply(
         //       bodyColor: Colors.black,
         //       displayColor: Colors.black,
         //     ),
         cardColor: lightCardColor,
-        brightness: Brightness.light,
-        colorScheme: ThemeData()
-            .colorScheme
-            .copyWith(
+        brightness: Brightness.light, colorScheme: ThemeData().colorScheme.copyWith(
               secondary: lightIconsColor,
               brightness: Brightness.light,
-            )
-            .copyWith(background: lightBackgroundColor),
+            ).copyWith(background: lightBackgroundColor),
       ),
       home: const HomeScreen(),
     );
